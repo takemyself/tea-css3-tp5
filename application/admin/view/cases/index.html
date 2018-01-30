@@ -1,0 +1,51 @@
+{extend name='public/master' /}
+{block name='content'}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">案例列表</h3>
+    </div>
+    <div class="panel-body">
+        <a href="{:url('admin/cases/addcases')}" class="btn btn-info">新增案例</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>案例名称</th>
+                <th>案例类型</th>
+                <th>发布时间</th>
+                <th>链接地址</th>
+                <th>案例图片</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="casesData" id="vo"}
+            <tr>
+                <td>{$vo.caid}</td>
+                <td>{$vo.caname}</td>
+                <td>{$vo.category_name}</td>
+                <td>{$vo.dates}</td>
+                <td>{$vo.url}</td>
+                <td><img src="__ROOT__/public/uploads/{$vo.pic}" width="400" alt=""></td>
+                <td>
+                    <a href="{:url('editcases',['caid'=>$vo.caid])}" class="btn btn-primary">编辑</a>
+                    <a href="javascript:;" class="btn btn-danger" data-toggle="modal" data-target="#myModal" urls="{:url('delcases',['caid'=>$vo.caid])}" >删除</a>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    var str=null;
+    $('.btn-danger').click(function () {
+        str=$(this).attr('urls');
+    });
+    function checkdel(){
+        location.href=str;
+    }
+</script>
+{/block}

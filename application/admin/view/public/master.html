@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>XX后台管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="__ROOT__/public/admin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__ROOT__/public/admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="__ROOT__/public/admin/css/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/public/uploadify/uploadify.css" />
+    <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/uploadify/jquery.uploadify.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <!--header-contont-->
+    <header class="main-header">
+        <a href="javascript:;" class="logo">
+            <span class="logo-mini"><b>后台</b></span>
+            <span class="logo-lg"><b>XX</b></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-sm" style="font-size: x-large;"><b>XX后台</b></span>
+                        </a>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">技术支持：XX互联</span>
+                        </a>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!--<img src="__ROOT__/public/admin/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
+                            <span class="hidden-xs">{$adminDate['name']}</span>
+                        </a>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" onclick="out()" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">退出</span>
+                        </a>
+                    </li>
+                    <script>
+                        function out() {
+                            $.post("out",{},function (res) {
+                                if (res){
+                                    location.reload();
+                                }
+                            },'json');
+                        }
+                    </script>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+ {include file="public/menu" /}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+
+            {block name="content"}主内容{/block}
+
+
+        </section>
+    </div>
+    <!-- /.content-footer -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2017-2027 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+        reserved.
+    </footer>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                确定删除么？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="return checkdel()">确定删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="__ROOT__/public/admin/js/app.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/ueditor/ueditor.all.min.js"> </script>
+</html>
