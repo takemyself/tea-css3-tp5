@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tea</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+<!--heard start-->
+<div id="heard" style="background: url('./images/topbg.jpg') repeat-x center;">
+    <div class="out_heard" style="">
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+        </div>
+        <div class="content">
+            <div class="phone">
+                <img src="./images/tel.png" width="252" height="37" alt="">
+            </div>
+            <div class="nav">
+                <a href="index.html"><span>首页</span><span>Home</span></a>
+                <a href="product.html"><span>产品中心</span><span>Product</span></a>
+                <a href="case.html"><span>案例展示</span><span>Case</span></a>
+                <a href="advantage.html"><span>优势介绍</span><span>Advantage</span></a>
+                <a href="join.html"><span>招商加盟</span><span>Join in</span></a>
+                <a href="news.html"><span>新闻动态</span><span>News</span></a>
+                <a href="honor.html"><span>荣誉资质</span><span>Honor</span></a>
+                <a href="about.html"><span>关于我们</span><span>About us</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="waptop">
+        <div class="waplogo">
+            <img src="./images/waplogo.png" width="120" height="35" alt="">
+        </div>
+        <div class="wapcontent">
+            <div class="wapnav">
+                <div class="center_border"></div>
+                <div class="wapnavcontent">
+                    <a href="index.html">首页</a>
+                    <a href="product.html">产品中心</a>
+                    <a href="case.html">案例展示</a>
+                    <a href="advantage.html">优势介绍</a>
+                    <a href="join.html">招商加盟</a>
+                    <a href="news.html">新闻动态</a>
+                    <a href="honor.html">荣誉资质</a>
+                    <a href="about.html">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--heard end-->
+
+<!--products start-->
+<div class="services products productsBox">
+    <h2 class="title"><span>南京西路店</span></h2>
+    <div class="case">
+        <div class="products_content">
+            <p><img src="./images/1-15032Q60922C2.jpg" alt=""></p>
+        </div>
+        <div class="products_detail">
+            图文介绍后台录入<img src="./images/1-15032Q60922C2.jpg" alt="">
+            图文介绍后台录入<img src="./images/1-15032Q60922C2.jpg" alt="">
+            图文介绍后台录入<img src="./images/1-15032Q60922C2.jpg" alt="">
+            图文介绍后台录入<img src="./images/1-15032Q60922C2.jpg" alt="">
+            图文介绍后台录入<img src="./images/1-15032Q60922C2.jpg" alt="">
+        </div>
+        <div class="paging">
+            <a href="" class="disabled">上一页</a>
+            <a href="">下一页</a>
+        </div>
+    </div>
+</div>
+<!--products end-->
+
+<!--footer start-->
+<div class="footer"> CopyRight 2015 All Right Reserved 正夷茶业 沪ICP备15008733号
+    <br>地址：上海市浦东新区板泉路728号恒大茶城1034  电话：4008-203-585  传真：021-51332318&nbsp;&nbsp;
+</div>
+<!--footer end-->
+
+</body>
+<script>
+    $(function () {
+
+        //导航点击
+        var wapnavNum=$('.wapnavcontent>a').length;
+        var sta=true;
+        $('.wapcontent').click(function () {
+            if (sta==true){
+                $('.wapnavcontent').stop().animate({height:45*wapnavNum+'px'},300,function () {
+                    sta=false;
+                });
+            }else {
+                $('.wapnavcontent').stop().animate({height:0},300,function () {
+                    sta=true;
+                });
+            }
+
+        });
+
+    });
+</script>
+</html>
