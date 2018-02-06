@@ -1,0 +1,77 @@
+{extend name='public/master' /}
+{block name='content'}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">产品优势</h3>
+    </div>
+    <div class="panel-body">
+        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">产品优势一句话</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" value="{$productData['short']}" placeholder="产品优势" name="short">
+                </div>
+            </div>
+            <div class="form-group adver">
+                {volist name="$productData['advers']" id="vo"}
+                <div class="col-sm-12 adverContent">
+                    <label for="inputEmail31" class="col-sm-2 control-label">产品优势点</label>
+                    <div class="col-sm-5">
+                        <textarea rows="5" cols="60" name="advers[]">{$vo}</textarea>
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="javascript:;" class="btn btn-danger removed">删除</a>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <div class="form-group">
+                <label for="inputEmail31" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <a href="javascript:;" class="btn btn-primary adds">增加</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail33" class="col-sm-2 control-label">内容</label>
+                <div class="col-sm-10">
+                    <textarea id="editor" type="text/plain" name="content">{$productData['content']}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn btn-primary">提交保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/html" id="contrast_tpl">
+    <div class="col-sm-12 adverContent">
+        <label for="inputEmail31" class="col-sm-2 control-label">产品优势点</label>
+        <div class="col-sm-5">
+            <textarea rows="5" cols="60" name="advers[]"></textarea>
+        </div>
+        <div class="col-sm-5">
+            <a href="javascript:;" class="btn btn-danger removed">删除</a>
+        </div>
+    </div>
+    </div>
+</script>
+
+<script>
+    $(function () {
+        var strDiv=$('.adver').html();
+        $('.adds').click(function () {
+            $('.adver').append($('#contrast_tpl').html());
+        });
+        $(document).on('click','.removed',function () {
+            $(this).parents('.adverContent').remove();
+        });
+
+        var ue = UE.getEditor('editor',{
+            initialFrameHeight:300,
+            initialFrameWidth:800,
+        });
+    });
+</script>
+{/block}

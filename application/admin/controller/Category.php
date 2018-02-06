@@ -19,71 +19,46 @@ class Category extends Common
     {
         parent ::_initialize();
         $this->model=new \app\admin\model\Category();
-        $this->modelTwo=new CategoryContent();
         $this->url=url('admin/category/index');
     }
 
-    /**
-     * category lists
-     * @return \think\response\View
-     */
     public function index(){
-        $categoryData=$this->model->all();
+        $categoryData=$this->model->order('sort desc')->select();
         $this->assign('categoryData',$categoryData);
         return view();
     }
 
-    /**
-     * add category
-     * @param Request $request
-     *
-     * @return \think\response\View
-     */
     public function addindex(Request $request){
         if($request->isPost()){
-            Cache::rm('service');
             $data=$request->param();
-            Db::startTrans();
-            try{
-                $pk=$this->model->trans_store($data);
-                $data['cid']=$pk;
-                $this->modelTwo->trans_store($data);
-                Db::commit();
-            }catch(\Exception $e){
-                Db::rollback();
-                echo "<script>alert('失败');history.go(-1)</script>";
-                exit;
-            }
-            $this->redirect('admin/category/index');
+            $this->return_res($this->model->store($data),$this->url);
         }
         return view();
     }
 
-    /**
-     * edit category
-     * @param Request $request
-     *
-     * @return \think\response\View
-     */
     public function editindex(Request $request){
-        $oldData=$this->modelTwo->with('Category')->find($request->param('cid'))->toArray();
+        $oldData=$this->model->get($request->param('cid'));
         if($request->isPost()){
-            Cache::rm('service');
             $data=$request->param();
-            $data['clid']=$oldData['clid'];
-            try{
-                $this->model->trans_store($data);
-                $this->modelTwo->trans_store($data);
-                Db::commit();
-            }catch(\Exception $e){
-                Db::rollback();
-                echo "<script>alert('编辑失败');history.go(-1)</script>";
-                exit;
-            }
-            echo "<script>alert('编辑成功');location.href='" . $this->url . "'</script>";
-            exit;
+            $this->return_res($this->model->store($data),$this->url);
         }
         $this->assign('oldData',$oldData);
         return view();
+    }
+
+    public function delcategory(Request $request){
+        if($request->isGet()){
+            $id=$request->param('id');
+            $num=$this->model->destroy($id);
+            $this->return_del($num,$this->url);
+        }
+    }
+
+    public function ajaxEditSort(Request $request)
+    {
+        if($request->isAjax()){
+            $data=$request->param();
+            return $this ->model -> editsort($data);
+        }
     }
 }

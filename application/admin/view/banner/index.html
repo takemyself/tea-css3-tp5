@@ -2,30 +2,29 @@
 {block name='content'}
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">业务分类</h3>
+        <h3 class="panel-title">banner列表</h3>
     </div>
     <div class="panel-body">
-        <a href="{:url('admin/category/addindex')}" class="btn btn-info">新增分类</a>
+        <a href="{:url('addbanner')}" class="btn btn-info">新增banner</a>
     </div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
             <tr>
                 <th>编号</th>
-                <th>分类名称</th>
+                <th>图片</th>
                 <th>排序</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            {volist name="$categoryData" id="vo"}
+            {volist name="$bannerData" id="vo"}
             <tr>
-                <td>{$vo.cid}</td>
-                <td>{$vo.cname}</td>
-                <td><input type="text" name="sort" id="{$vo.cid}" value="{$vo.sort}"></td>
+                <td>{$vo.bid}</td>
+                <td><img src="__ROOT__/public/uploads/{$vo.pic}" width="200" alt=""></td>
+                <td><input type="text" id="{$vo.bid}" name="sort" value="{$vo.sort}"></td>
                 <td>
-                    <a href="{:url('editindex',['cid'=>$vo.cid])}" class="btn btn-primary">编辑</a>
-                    <a href="javascript:;" class="btn btn-danger" urls="{:url('delcategory',['id'=>$vo.cid])}" data-toggle="modal" data-target="#myModal" onclick="attrcid()">删除</a>
+                    <a href="javascript:;" class="btn btn-danger" urls="{:url('admin/banner/delbanner',['id'=>$vo.bid])}" data-toggle="modal" data-target="#myModal">删除</a>
                 </td>
             </tr>
             {/volist}

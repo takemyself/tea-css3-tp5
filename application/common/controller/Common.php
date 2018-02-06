@@ -55,6 +55,24 @@ class Common extends Controller
     }
 
     /**
+     * 删除
+     * @param $res
+     * @param $url
+     */
+    public function return_del($res, $url,$pic='')
+    {
+        if ($res >= 1) {
+            if (!empty($pic)&&is_file($pic)){
+                unlink($pic);
+            }
+            echo "<script>alert('删除成功');location.href='" . $url . "'</script>";
+            exit;
+        } else {
+            echo "<script>alert('删除失败');history.go(-1)</script>";
+            exit;
+        }
+    }
+    /**
      * 图片上传
      */
     public function uploads()

@@ -9,9 +9,8 @@
 namespace app\admin\model;
 use app\common\model\Common;
 
-class Category extends Common
+class Productcontent extends Common
 {
-    protected $table='ht_category';
-    protected $pk='cid';
-    protected $sort='sort';
+    protected $table='ht_cases';
+    protected $pk='caid';
 }

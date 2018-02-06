@@ -9,9 +9,9 @@
 namespace app\admin\model;
 use app\common\model\Common;
 
-class Category extends Common
+class Nav extends Common
 {
-    protected $table='ht_category';
-    protected $pk='cid';
+    protected $table='ht_nav';
+    protected $pk='id';
     protected $sort='sort';
 }

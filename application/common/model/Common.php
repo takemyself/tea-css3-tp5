@@ -42,9 +42,16 @@ class Common extends Model
 	  }
 	  return $this->judegRes($this->allowField(true)->save($data),'添加成功');
    }
+
+    /**
+     * 排序
+     * @param $data
+     *
+     * @return array
+     */
    public function editsort($data){
-	  if (isset($data[$this->pk])){
-		 return $this->judegRes($this->allowField($this->sort)->save($data,[$this->pk=>$data[$this->pk]]),'编辑成功');
+	  if (isset($data['id'])){
+		 return $this->judegRes($this->allowField($this->sort)->save($data,[$this->pk=>$data['id']]),'编辑成功');
 	  }
 	  return ['valid'=>0,'msg'=>'操作失败，请重新操作'];
    }
